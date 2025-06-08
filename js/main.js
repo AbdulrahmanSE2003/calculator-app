@@ -1,3 +1,4 @@
+// !NOTE: Dark Mode Toggle
 /*!-------------------------------------------------------------------------------!*/
 toggleThemeBtn = document.querySelector("#theme-toggle");
 
@@ -10,6 +11,8 @@ toggleThemeBtn.addEventListener("click", () => {
 });
 /*!-------------------------------------------------------------------------------!*/
 // !NOTE: Calc Logic
+let operators = ["+", "-", "*", "/"];
+let screenIp = document.querySelector("#screen");
 btns = document.querySelectorAll(".btns div button");
 
 btns.forEach((btn) => {
@@ -17,12 +20,9 @@ btns.forEach((btn) => {
         calcScreen(e.currentTarget.value);
     });
 });
-
-let screenIp = document.querySelector("#screen");
 function calcScreen(num) {
     let tempArr = Array.from(screenIp.value) || [];
-    let operators = ["+", "-", "*", "/"];
-    if (Number(screenIp.value) === 0) {
+    if (Number(screenIp.value) === 0 || screenIp.value === "Error") {
         screenIp.value = "";
     }
 
@@ -35,7 +35,7 @@ function calcScreen(num) {
     switch (num) {
         case "del":
             if (screenIp.value !== "") {
-                screenIp.value = tempArr.splice(0, tempArr.length - 1).join("");
+                screenIp.value = tempArr.slice(0, -1).join("");
                 console.log(screenIp.value);
             }
             break;
@@ -45,63 +45,40 @@ function calcScreen(num) {
             break;
 
         case "=":
-            let result = eval(screenIp.value);
-            screenIp.value = result;
+            try {
+                let result = eval(screenIp.value);
+                screenIp.value = result.toLocaleString();
+            } catch {
+                screenIp.value = "Error";
+            }
             break;
 
         case ".":
             if (checkRepeated(".", tempArr)) {
-                lastChar = screenIp.value.slice(-1);
-                if (operators.includes(lastChar)) {
-                    screenIp.value = tempArr.slice(0, -1).join("") + ".";
-                } else {
-                    screenIp.value += ".";
-                }
+                notInFirst(".", tempArr);
             }
             break;
 
         case "+":
             if (checkRepeated("+", tempArr)) {
-                lastChar = screenIp.value.slice(-1);
-                if (operators.includes(lastChar)) {
-                    screenIp.value = tempArr.slice(0, -1).join("") + "+";
-                } else {
-                    screenIp.value += "+";
-                }
+                notInFirst("+", tempArr);
             }
             break;
 
         case "-":
             if (checkRepeated("-", tempArr)) {
-                lastChar = screenIp.value.slice(-1);
-                if (operators.includes(lastChar)) {
-                    screenIp.value = tempArr.slice(0, -1).join("") + "-";
-                } else {
-                    screenIp.value += "-";
-                }
+                notInFirst("-", tempArr);
             }
             break;
         case "/":
             if (checkRepeated("/", tempArr)) {
-                lastChar = screenIp.value.slice(-1);
-                if (operators.includes(lastChar)) {
-                    console.log("yeb");
-                    screenIp.value = tempArr.slice(0, -1).join("") + "/";
-                } else {
-                    screenIp.value += "/";
-                }
+                notInFirst("/", tempArr);
             }
             break;
 
         case "*":
             if (checkRepeated("*", tempArr)) {
-                lastChar = screenIp.value.slice(-1);
-                if (operators.includes(lastChar)) {
-                    console.log("yeb");
-                    screenIp.value = tempArr.slice(0, -1).join("") + "*";
-                } else {
-                    screenIp.value += "*";
-                }
+                notInFirst("*", tempArr);
             }
             break;
 
@@ -114,9 +91,16 @@ function calcScreen(num) {
     }
 }
 
+// !NOTE: Functions
 function checkRepeated(val, arr) {
-    if (arr.includes(val)) {
-        return;
+    return !arr.includes(val);
+}
+
+function notInFirst(val, arr) {
+    lastChar = screenIp.value.slice(-1);
+    if (operators.includes(lastChar)) {
+        screenIp.value = arr.slice(0, -1).join("") + val;
+    } else {
+        screenIp.value += val;
     }
-    return 1;
 }
