@@ -39,6 +39,18 @@ body.light-theme {
     color: #333;
 }
 
+.container {
+    transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -o-transform: scale(1.2);
+}
+
+.calculator {
+    width: 40%;
+}
+
 /* !-------------------------------------------------------------------------------! */
 /* Header */
 .header {
