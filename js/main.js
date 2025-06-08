@@ -54,30 +54,30 @@ function calcScreen(num) {
             break;
 
         case ".":
-            if (checkRepeated(".", tempArr)) {
+            if (checkRepeated(".")) {
                 notInFirst(".", tempArr);
             }
             break;
 
         case "+":
-            if (checkRepeated("+", tempArr)) {
+            if (checkRepeated("+")) {
                 notInFirst("+", tempArr);
             }
             break;
 
         case "-":
-            if (checkRepeated("-", tempArr)) {
+            if (checkRepeated("-")) {
                 notInFirst("-", tempArr);
             }
             break;
         case "/":
-            if (checkRepeated("/", tempArr)) {
+            if (checkRepeated("/")) {
                 notInFirst("/", tempArr);
             }
             break;
 
         case "*":
-            if (checkRepeated("*", tempArr)) {
+            if (checkRepeated("*")) {
                 notInFirst("*", tempArr);
             }
             break;
@@ -92,12 +92,23 @@ function calcScreen(num) {
 }
 
 // !NOTE: Functions
-function checkRepeated(val, arr) {
-    return !arr.includes(val);
+function checkRepeated(val) {
+    let lastIndex = -1;
+    operators.forEach((op) => {
+        let lastIdx = screenIp.value.lastIndexOf(op);
+
+        if (lastIdx > lastIndex) {
+            lastIndex = lastIdx;
+        }
+    });
+
+    let curNum = screenIp.value.slice(lastIndex + 1);
+
+    return !curNum.includes(val);
 }
 
 function notInFirst(val, arr) {
-    lastChar = screenIp.value.slice(-1);
+    let lastChar = screenIp.value.slice(-1);
     if (operators.includes(lastChar)) {
         screenIp.value = arr.slice(0, -1).join("") + val;
     } else {
