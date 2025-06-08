@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="css/bootstrap.css" />
+        <link rel="stylesheet" href="css/style.css" />
+        <title>Calculator</title>
+    </head>
+    <body class="dark-theme">
+        <section
+            class="min-vh-100 w-100 d-flex justify-content-center align-items-center"
+        >
+            <div
+                class="container-md container-fluid p-0 d-flex justify-content-center"
+            >
+                <div
+                    class="calculator h-100 m-0 d-flex flex-column justify-content-evenly align-items-center p-5 py-4"
+                >
+                    <div
+                        class="header d-flex justify-content-between align-self-start align-items-center w-100"
+                    >
+                        <span class="title fs-2 fw-bold">calc</span>
+                        <div
+                            class="theme d-flex align-items-center justify-content-center"
+                        >
+                            <span class="fs-6">Theme</span>
+                            <span id="theme-toggle" class="icon"></span>
+                        </div>
+                    </div>
+
+                    <div class="screen">
+                        <input
+                            id="screen"
+                            type="text"
+                            disabled
+                            value="0"
+                            name=""
+                            id=""
+                        />
+                    </div>
+
+                    <div
+                        class="row g-2 gx-3 justify-content-center btns px-md-3"
+                    >
+                        <div class="col-3">
+                            <button class="w-100 px-4 py-2" value="7">
+                                <span>7</span>
+                            </button>
+                        </div>
+                        <div class="col-3">
+                            <button class="w-100 px-4 py-2" value="8">
+                                <span>8</span>
+                            </button>
+                        </div>
+                        <div class="col-3">
+                            <button class="w-100 px-4 py-2" value="9">
+                                <span>9</span>
+                            </button>
+                        </div>
+                        <div class="col-3">
+                            <button
+                                class="w-100 py-2 del del-btn-custom"
+                                value="del"
+                            >
+                                <span>del</span>
+                            </button>
+                        </div>
+
+                        <div class="col-3">
+                            <button class="w-100 px-4 py-2" value="4">
+                                <span>4</span>
+                            </button>
+                        </div>
+                        <div class="col-3">
+                            <button class="w-100 px-4 py-2" value="5">
+                                <span>5</span>
+                            </button>
+                        </div>
+                        <div class="col-3">
+                            <button class="w-100 px-4 py-2" value="6">
+                                <span>6</span>
+                            </button>
+                        </div>
+                        <div class="col-3">
+                            <button class="w-100 px-4 py-2" value="+">
+                                <span>+</span>
+                            </button>
+                        </div>
+
+                        <div class="col-3">
+                            <button class="w-100 px-4 py-2" value="1">
+                                <span>1</span>
+                            </button>
+                        </div>
+                        <div class="col-3">
+                            <button class="w-100 px-4 py-2" value="2">
+                                <span>2</span>
+                            </button>
+                        </div>
+                        <div class="col-3">
+                            <button class="w-100 px-4 py-2" value="3">
+                                <span>3</span>
+                            </button>
+                        </div>
+                        <div class="col-3">
+                            <button class="w-100 px-4 py-2" value="-">
+                                <span>-</span>
+                            </button>
+                        </div>
+
+                        <div class="col-3">
+                            <button class="w-100 px-4 py-2" value=".">
+                                <span>.</span>
+                            </button>
+                        </div>
+                        <div class="col-3">
+                            <button class="w-100 px-4 py-2" value="0">
+                                <span>0</span>
+                            </button>
+                        </div>
+                        <div class="col-3">
+                            <button class="w-100 px-4 py-2" value="/">
+                                <span>/</span>
+                            </button>
+                        </div>
+                        <div class="col-3">
+                            <button class="w-100 px-4 py-2" value="*">
+                                <span>x</span>
+                            </button>
+                        </div>
+
+                        <div
+                            class="row justify-content-evenly align-items-center mt-2 g-2 gx-1"
+                        >
+                            <div class="col">
+                                <button
+                                    class="w-100 py-2 reset equal-btn-custom"
+                                    value="reset"
+                                >
+                                    <span>Reset</span>
+                                </button>
+                            </div>
+                            <div class="col">
+                                <button
+                                    class="w-100 py-2 result equal-btn-custom"
+                                    value="="
+                                >
+                                    <span>=</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <script src="js/bootstrap.bundle.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+</html>
