@@ -153,6 +153,10 @@ body.dark-theme .btns {
 }
 
 /* Special Buttons */
+.btns .del {
+    font-size: 2rem;
+}
+
 .btns .del,
 .btns .reset,
 .btns .result {
@@ -205,5 +209,13 @@ button:active {
 @media screen and (max-width: 600px) {
     .calculator {
         width: 90%;
+    }
+}
+@media screen and (max-width: 470px) {
+    .btns button {
+        overflow: hidden;
+    }
+    .btns .del {
+        font-size: 1.5rem;
     }
 }
